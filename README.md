@@ -1,9 +1,13 @@
-# Colorizer
+# ColorizerCLI
 
-## A very simple way to add color to your Python CLI apps.
+A very simple way to add color to your Python CLI apps.
 
+View on PyPi:  https://pypi.org/project/ColorizerCLI/
 
+# Install the package:
+pip install ColorizerCLI
 #
+
 # Example uses:
 
 
