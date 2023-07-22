@@ -2,10 +2,6 @@
 
 A very simple way to add color to your Python CLI apps.
 
-View on PyPi:  https://pypi.org/project/CLIColorizer
-
-# Install the package:
-pip install CLIColorizer
 #
 
 # Example uses:
