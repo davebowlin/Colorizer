@@ -1,4 +1,4 @@
-# CLIColorizer
+# Colorizer
 
 A very simple way to add color to your Python CLI apps.
 
@@ -8,7 +8,7 @@ A very simple way to add color to your Python CLI apps.
 
 
 ## Create an instance of the Colorizer class
- color = CLIColorizer()
+ color = Colorizer()
 ##
 ## Example usage
 print(f"{color.yellow}Hello, World!{color.reset}")

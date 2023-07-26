@@ -1,4 +1,4 @@
-class CLIColorizer:
+class Colorizer:
     """
     This class is used to colorize and style console text.
     """
@@ -78,6 +78,6 @@ def print_colored_text(text, code_name):
     """
     This function prints text in the specified color or style.
     """
-    color = CLIColorizer()
+    color = Colorizer()
     print(f"{getattr(color, code_name)}{text}{color.reset}")
 
