@@ -43,6 +43,7 @@ class Color(metaclass=LowercaseAttributesMeta):
     MAGENTA = "\033[35m"
     CYAN = "\033[36m"
     WHITE = "\033[37m"
+    ORANGE = "\033[38;5;208m"
 
     BRIGHT_BLACK = "\033[90m"
     BRIGHT_RED = "\033[91m"
@@ -82,5 +83,3 @@ class Color(metaclass=LowercaseAttributesMeta):
 
 # color = Color()
 # print(f"{color.ITALIC}{color.BRIGHT_BLUE}This is italic bright red.{color.RESET}")
-
-print(f"{Color.green}This is green text.{Color.reset}")
