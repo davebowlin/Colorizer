@@ -6,22 +6,22 @@ A very simple way to add color to your Python CLI apps.
 
 # Example uses:
 
+## Imports
+ from colorizer import Color
+ from colorizer import Color as color
+ import colorizer
 
 ## Create an instance of the Colorizer class
- color = Colorizer()
+ color = Color()
 ##
-## Example usage
-print(f"{color.yellow}Hello, World!{color.reset}")
+##
+## Example usages
+ print(Color.colorize("red", "Hello, World!"))
 
-print(f"{color.blink}{color.yellow}{color.red_bg}Hello, world!{color.reset}")
+ print(f"{Color.GREEN}This is green text.{Color.RESET}")
 
-print_colored_text("Hello, World!", "yellow")
-
-print_colored_text("This is a test.", "red")
-
-print_colored_text("The sky is blue.", "blue")
-
-print_colored_text("I love Python.", "white")
+ color = Color() # create an object of the Color class named color
+ print(f"{color.ITALIC}{color.BRIGHT_BLUE}This is italic bright blue.{color.RESET}")
 
 ##
 # Caveats:

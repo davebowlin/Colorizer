@@ -1,85 +1,62 @@
-class Colorizer:
-    """
-    This class is used to colorize and style console text.
-    """
-    def __init__(self):
-        self.styles = {
-            "reset": "\033[0m", # resets all colors and styles
-            "bold_bright": "\033[1m",
-            "dim": "\033[2m",
-            "italic": "\033[3m",
-            "underline": "\033[4m",
-            "blink": "\033[5m",
-            "rapid_blink": "\033[6m",
-            "reverse": "\033[7m",
-            "hide": "\033[8m",
-            "strikethrough": "\033[9m",
-            "reset_bold_bright": "\033[21m",
-            "reset_dim": "\033[22m",
-            "reset_italic": "\033[23m",
-            "reset_underline": "\033[24m",
-            "reset_blink": "\033[25m",
-            "reset_reverse": "\033[27m",
-            "reset_hide": "\033[28m",
-            "reset_strikethrough": "\033[29m",
-}
-        
-        self.foreground_colors = {
-            "black": "\033[30m",
-            "red": "\033[31m",
-            "green": "\033[32m",
-            "yellow": "\033[33m",
-            "blue": "\033[34m",
-            "magenta": "\033[35m",
-            "cyan": "\033[36m",
-            "white": "\033[37m",
-            "bright_black": "\033[90m",
-            "bright_red": "\033[91m",
-            "bright_green": "\033[92m",
-            "bright_yellow": "\033[93m",
-            "bright_blue": "\033[94m",
-            "bright_magenta": "\033[95m",
-            "bright_cyan": "\033[96m",
-            "bright_white": "\033[97m",
-        }
-        
-        self.background_colors = {
-            "black_bg": "\033[40m",
-            "red_bg": "\033[41m",
-            "green_bg": "\033[42m",
-            "yellow_bg": "\033[43m",
-            "blue_bg": "\033[44m",
-            "magenta_bg": "\033[45m",
-            "cyan_bg": "\033[46m",
-            "white_bg": "\033[47m",
-            "bright_black_bg": "\033[100m",
-            "bright_red_bg": "\033[101m",
-            "bright_green_bg": "\033[102m",
-            "bright_yellow_bg": "\033[103m",
-            "bright_blue_bg": "\033[104m",
-            "bright_magenta_bg": "\033[105m",
-            "bright_cyan_bg": "\033[106m",
-            "bright_white_bg": "\033[107m",
-        }
-        
-        self.all_codes = {**self.styles, **self.foreground_colors, **self.background_colors}
-        
-        __dict__ = self.all_codes.copy()
+class Color:
+    
+    BOLD_BRIGHT = "\033[1m"
+    DIM = "\033[2m"
+    ITALIC = "\033[3m"
+    UNDERLINE = "\033[4m"
+    BLINK = "\033[5m"
+    RAPID_BLINK = "\033[6m"
+    REVERSE = "\033[7m"
+    HIDE = "\033[8m"
+    STRIKETHROUGH = "\033[9m"
+    
+    RESET = "\033[0m"  # resets all colors and styles
+    RESET_BACKGROUND = "\033[49m"
+    RESET_FOREGROUND = "\033[7m"
+    RESET_REVERSE = "\033[27m"
+    RESET_BOLD_BRIGHT = "\033[21m"
+    RESET_DIM = "\033[22m"
+    RESET_ITALIC = "\033[23m"
+    RESET_UNDERLINE = "\033[24m"
+    RESET_BLINK = "\033[25m"
+    RESET_HIDE = "\033[28m"
+    RESET_STRIKETHROUGH = "\033[29m"
 
-    def __getattr__(self, code):
-        """
-        This method returns the ANSI escape code for the requested color or style.
-        """
-        try:
-            return self.all_codes[code]
-        except KeyError:
-            raise ValueError(f"Unsupported code: {code}")
+    BLACK = "\033[30m"
+    RED = "\033[31m"
+    GREEN = "\033[32m"
+    YELLOW = "\033[33m"
+    BLUE = "\033[34m"
+    MAGENTA = "\033[35m"
+    CYAN = "\033[36m"
+    WHITE = "\033[37m"
 
+    BRIGHT_BLACK = "\033[90m"
+    BRIGHT_RED = "\033[91m"
+    BRIGHT_GREEN = "\033[92m"
+    BRIGHT_YELLOW = "\033[93m"
+    BRIGHT_BLUE = "\033[94m"
+    BRIGHT_MAGENTA = "\033[95m"
+    BRIGHT_CYAN = "\033[96m"
+    BRIGHT_WHITE = "\033[97m"
+    
+    BLACK_BG = "\033[40m"
+    RED_BG = "\033[41m"
+    GREEN_BG = "\033[42m"
+    YELLOW_BG = "\033[43m"
+    BLUE_BG = "\033[44m"
+    MAGENTA_BG = "\033[45m"
+    CYAN_BG = "\033[46m"
+    WHITE_BG = "\033[47m"
 
-def print_colored_text(text, code_name):
-    """
-    This function prints text in the specified color or style.
-    """
-    color = Colorizer()
-    print(f"{getattr(color, code_name)}{text}{color.reset}")
+    @classmethod
+    def colorize(cls, color, text):
+        return f'{getattr(cls, color.upper(), "")}{text}{cls.RESET}'
 
+# example use:
+# print(Color.colorize("red", "Hello, World!"))
+
+# print(f"{Color.GREEN}This is green text.{Color.RESET}")
+
+# color = Color()
+# print(f"{color.ITALIC}{color.BRIGHT_BLUE}This is italic bright red.{color.RESET}")
