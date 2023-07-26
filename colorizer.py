@@ -1,4 +1,17 @@
-class Color:
+class LowercaseAttributesMeta(type):
+    """A metaclass that automatically creates lowercase variants of class attributes."""
+    def __new__(mcls, name, bases, attrs):
+        # Create the class as normal.
+        cls = super().__new__(mcls, name, bases, attrs)
+        
+        # Add lowercase attributes.
+        for attr_name, attr_value in attrs.items():
+            if isinstance(attr_value, str) and attr_name.isupper():
+                setattr(cls, attr_name.lower(), attr_value)
+        
+        return cls
+
+class Color(metaclass=LowercaseAttributesMeta):
     
     BOLD_BRIGHT = "\033[1m"
     DIM = "\033[2m"
@@ -52,7 +65,16 @@ class Color:
     @classmethod
     def colorize(cls, color, text):
         return f'{getattr(cls, color.upper(), "")}{text}{cls.RESET}'
-
+    @classmethod
+    def get_color(cls, name):
+        """Gets the color constant for the given name."""
+        if name.lower() in cls.__dict__:
+            return getattr(cls, name.lower())
+        elif name.upper() in cls.__dict__:
+            return getattr(cls, name.upper())
+        else:
+            raise ValueError(f"Invalid color name: {name}")
+        
 # example use:
 # print(Color.colorize("red", "Hello, World!"))
 
@@ -60,3 +82,5 @@ class Color:
 
 # color = Color()
 # print(f"{color.ITALIC}{color.BRIGHT_BLUE}This is italic bright red.{color.RESET}")
+
+print(f"{Color.green}This is green text.{Color.reset}")
