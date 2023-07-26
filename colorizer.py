@@ -63,6 +63,8 @@ class Colorizer:
         }
         
         self.all_codes = {**self.styles, **self.foreground_colors, **self.background_colors}
+        
+        __dict__ = self.all_codes.copy()
 
     def __getattr__(self, code):
         """
