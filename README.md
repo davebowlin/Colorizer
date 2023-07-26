@@ -8,7 +8,9 @@ A very simple way to add color to your Python CLI apps.
 
 ## Imports
  from colorizer import Color
+ 
  from colorizer import Color as color
+ 
  import colorizer
 
 ## Create an instance of the Colorizer class
@@ -21,6 +23,7 @@ A very simple way to add color to your Python CLI apps.
  print(f"{Color.GREEN}This is green text.{Color.RESET}")
 
  color = Color() # create an object of the Color class named color
+
  print(f"{color.ITALIC}{color.BRIGHT_BLUE}This is italic bright blue.{color.RESET}")
 
 ##
