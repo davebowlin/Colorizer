@@ -1,7 +1,7 @@
 """
     A simple example of importing and using Colorizer
 """
-from colorizer import Color as color  # import the class as an object named color
+from mypycolorizer.colorizer import Color as color  # import the class as an object named color
 
 # different examples of using the colors
 print(f"This is {color.RED}red{color.RESET} text.")
