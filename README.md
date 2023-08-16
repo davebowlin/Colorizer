@@ -11,9 +11,9 @@ pip install mypycolorizer
 # Example uses:
 
 ## Imports
- from colorizer import Color
+ from mypycolorizer.colorizer import Color
  -or-
- from colorizer import Color as color
+ from mypycolorizer.colorizer import Color as color
 
 ## Create an instance of the Colorizer class
  color = Color()
